@@ -1,0 +1,64 @@
+fundamentals = {
+    "interest_rate": "high",
+    "inflation": "low",
+    "employment": "strong",
+    "gdp_growth": "weak",
+    "trade_balance": "surplus"
+}
+
+currency = input('Currency: ').upper()
+
+def calculate_score(fundamentals):
+	if fundamentals['interest_rate'] == 'high':
+		interest_rate = +2
+	elif fundamentals['interest_rate'] == 'low':
+		interest_rate = -2
+
+	if fundamentals['inflation'] == 'low':
+		inflation = +1
+	elif fundamentals['inflation'] == 'high':
+		inflation = -1
+
+	if fundamentals['employment'] == 'strong':
+		employment = +2
+	elif fundamentals['employment'] == 'weak':
+		employment = -2
+
+	if fundamentals['gdp_growth'] == 'strong':
+		gdp_growth = +2
+	elif fundamentals['gdp_growth'] == 'weak':
+		gdp_growth = -1
+
+	if fundamentals['trade_balance'] == 'surplus':
+		trade_balance = +1
+	elif fundamentals['trade_balance'] == 'deficit':
+		trade_balance = -1
+
+	print('---- Fundamental Analysis ----')
+	print(f'Currency: {currency}')
+	print(f'Interest Rate: {fundamentals["interest_rate"]} → {interest_rate} ')
+	print(f'Inflation: {fundamentals["inflation"]} → {inflation} ')
+	print(f'Employment: {fundamentals["employment"]} → {employment}')
+	print(f'GDP Growth: {fundamentals["gdp_growth"]} → {gdp_growth}')
+	print(f'Trade Balance: {fundamentals["trade_balance"]} → {trade_balance}')
+
+	total_score = interest_rate + inflation + employment + gdp_growth + trade_balance
+	return total_score
+
+total_score = calculate_score(fundamentals)
+
+def display_analysis(currency, total_score):
+	if total_score >= 4:
+		verdict = 'Bullish 🐂'
+	elif total_score <= -4:
+		verdict = 'Bearish 🐻'
+	else:
+		verdict = 'Neutral ➡️'
+
+	print(f'\nTotal Score: {total_score}')
+	print(f'Verdict: {verdict}')
+
+display_analysis(currency, total_score)
+
+
+
